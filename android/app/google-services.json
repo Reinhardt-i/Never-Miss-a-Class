@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "691541525607",
+    "project_id": "nevermissaclass-92aac",
+    "storage_bucket": "nevermissaclass-92aac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691541525607:android:078b1dfada30087e9fc0c2",
+        "android_client_info": {
+          "package_name": "com.example.never_miss_a_class"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691541525607-a3d8bec04qfr87sk4jkqj9fovbo323og.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.never_miss_a_class",
+            "certificate_hash": "db8e496f58b9acb9af5750059ab6d9ff8002e7bc"
+          }
+        },
+        {
+          "client_id": "691541525607-5jhnfkabgr5udftgkg3o4t4hqrgn775s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYgNBEiF4J1uGYq7IItLmgcEO3d_9AVF0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "691541525607-5jhnfkabgr5udftgkg3o4t4hqrgn775s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
