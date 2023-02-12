@@ -10,4 +10,4 @@
 ## Getting Started
 Download the repo, use "*flutter run*" to test the app.
 
-![Alt text](assets\readme_loginpage.png?raw=true "Title")
+![Alt text](https://github.com/Reinhardt-i/Never-Miss-a-Class/blob/main/assets/readme_loginpage.png)
