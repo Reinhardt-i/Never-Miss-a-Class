@@ -1,7 +1,0 @@
-
-# Extensions :
-    Pubspec Assist
-
-# Firebase :
-    - Auth done
-    - Firestore

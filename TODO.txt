@@ -1,4 +1,0 @@
-
-1. Adding firebase to Android
-2. To iOS
-3. TO WEB

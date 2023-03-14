@@ -1,10 +1,10 @@
+import 'package:never_miss_a_class/helper/helper_function.dart';
+import 'package:never_miss_a_class/pages/auth/login_page.dart';
+import 'package:never_miss_a_class/pages/home_page.dart';
+import 'package:never_miss_a_class/shared/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:never_miss_a_class/helper/helper_function.dart';
-import 'package:never_miss_a_class/pages/home_page.dart';
-import 'package:never_miss_a_class/shared/constants.dart';
-import 'pages/auth/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,11 +13,9 @@ void main() async {
     await Firebase.initializeApp(
         options: FirebaseOptions(
             apiKey: Constants.apiKey,
-            authDomain: Constants.authDomain,
-            projectId: Constants.projectId,
-            storageBucket: Constants.storageBucket,
+            appId: Constants.appId,
             messagingSenderId: Constants.messagingSenderId,
-            appId: Constants.appId));
+            projectId: Constants.projectId));
   } else {
     await Firebase.initializeApp();
   }
@@ -26,7 +24,7 @@ void main() async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -34,17 +32,19 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool _isSignedIn = false;
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getUserLoggedInStatus();
   }
 
-  void getUserLoggedInStatus() async {
-    await HelperFunction.getUserLoggedInStatus().then((value) {
+  getUserLoggedInStatus() async {
+    await HelperFunctions.getUserLoggedInStatus().then((value) {
       if (value != null) {
-        _isSignedIn = value;
+        setState(() {
+          _isSignedIn = value;
+        });
       }
     });
   }
@@ -54,7 +54,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       theme: ThemeData(
           primaryColor: Constants().primaryColor,
-          scaffoldBackgroundColor: Colors.white70),
+          scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
       home: _isSignedIn ? const HomePage() : const LoginPage(),
     );
