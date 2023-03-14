@@ -1,10 +1,10 @@
+import 'package:never_miss_a_class/helper/helper_function.dart';
+import 'package:never_miss_a_class/pages/auth/login_page.dart';
+import 'package:never_miss_a_class/pages/home_page.dart';
+import 'package:never_miss_a_class/shared/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:never_miss_a_class/helper/helper_function.dart';
-import 'package:never_miss_a_class/pages/home_page.dart';
-import 'package:never_miss_a_class/shared/constants.dart';
-import 'pages/auth/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,11 +13,9 @@ void main() async {
     await Firebase.initializeApp(
         options: FirebaseOptions(
             apiKey: Constants.apiKey,
-            authDomain: Constants.authDomain,
-            projectId: Constants.projectId,
-            storageBucket: Constants.storageBucket,
+            appId: Constants.appId,
             messagingSenderId: Constants.messagingSenderId,
-            appId: Constants.appId));
+            projectId: Constants.projectId));
   } else {
     await Firebase.initializeApp();
   }
