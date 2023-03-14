@@ -1,6 +1,7 @@
 import 'package:never_miss_a_class/helper/helper_function.dart';
 import 'package:never_miss_a_class/pages/auth/login_page.dart';
 import 'package:never_miss_a_class/pages/home_page.dart';
+import 'package:never_miss_a_class/service/auth_service.dart';
 import 'package:never_miss_a_class/widgets/widgets.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String email = "";
   String password = "";
   String fullName = "";
+  AuthService authService = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -160,5 +162,27 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  register() async {}
+  register() async {
+    if (formKey.currentState!.validate()) {
+      setState(() {
+        _isLoading = true;
+      });
+      await authService
+          .registerUserWithEmailandPassword(fullName, email, password)
+          .then((value) async {
+        if (value == true) {
+          // saving the shared preference state
+          await HelperFunctions.saveUserLoggedInStatus(true);
+          await HelperFunctions.saveUserEmailSF(email);
+          await HelperFunctions.saveUserNameSF(fullName);
+          nextScreenReplace(context, const HomePage());
+        } else {
+          showSnackbar(context, Colors.red, value);
+          setState(() {
+            _isLoading = false;
+          });
+        }
+      });
+    }
+  }
 }

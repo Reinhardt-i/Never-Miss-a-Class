@@ -1,5 +1,10 @@
 import 'package:never_miss_a_class/helper/helper_function.dart';
 import 'package:never_miss_a_class/pages/auth/login_page.dart';
+import 'package:never_miss_a_class/pages/auth/register_page.dart';
+import 'package:never_miss_a_class/service/auth_service.dart';
+import 'package:never_miss_a_class/service/database_service.dart';
+import 'package:never_miss_a_class/widgets/widgets.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,6 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String userName = "";
   String email = "";
+  AuthService authService = AuthService();
   Stream? groups;
   bool _isLoading = false;
   String groupName = "";
@@ -42,6 +48,14 @@ class _HomePageState extends State<HomePage> {
         userName = val!;
       });
     });
+    // getting the list of snapshots in our stream
+    await DatabaseService(uid: FirebaseAuth.instance.currentUser!.uid)
+        .getUserGroups()
+        .then((snapshot) {
+      setState(() {
+        groups = snapshot;
+      });
+    });
   }
 
   @override
@@ -50,7 +64,9 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                nextScreen(context, const RegisterPage());
+              },
               icon: const Icon(
                 Icons.search,
               ))
@@ -100,7 +116,9 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              nextScreenReplace(context, RegisterPage());
+            },
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             leading: const Icon(Icons.group),
@@ -130,6 +148,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         IconButton(
                           onPressed: () async {
+                            await authService.signOut();
                             Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
                                     builder: (context) => const LoginPage()),
@@ -154,6 +173,7 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       )),
+      body: groupList(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           popUpDialog(context);
@@ -226,7 +246,16 @@ class _HomePageState extends State<HomePage> {
                       setState(() {
                         _isLoading = true;
                       });
+                      DatabaseService(
+                              uid: FirebaseAuth.instance.currentUser!.uid)
+                          .createGroup(userName,
+                              FirebaseAuth.instance.currentUser!.uid, groupName)
+                          .whenComplete(() {
+                        _isLoading = false;
+                      });
                       Navigator.of(context).pop();
+                      showSnackbar(
+                          context, Colors.green, "Group created successfully.");
                     }
                   },
                   style: ElevatedButton.styleFrom(
@@ -237,6 +266,37 @@ class _HomePageState extends State<HomePage> {
             );
           }));
         });
+  }
+
+  groupList() {
+    return StreamBuilder(
+      stream: groups,
+      builder: (context, AsyncSnapshot snapshot) {
+        // make some checks
+        if (snapshot.hasData) {
+          if (snapshot.data['groups'] != null) {
+            if (snapshot.data['groups'].length != 0) {
+              return ListView.builder(
+                itemCount: snapshot.data['groups'].length,
+                itemBuilder: (context, index) {
+                  int reverseIndex = snapshot.data['groups'].length - index - 1;
+                  return RegisterPage();
+                },
+              );
+            } else {
+              return noGroupWidget();
+            }
+          } else {
+            return noGroupWidget();
+          }
+        } else {
+          return Center(
+            child: CircularProgressIndicator(
+                color: Theme.of(context).primaryColor),
+          );
+        }
+      },
+    );
   }
 
   noGroupWidget() {
