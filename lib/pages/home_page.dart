@@ -1,6 +1,5 @@
 import 'package:never_miss_a_class/helper/helper_function.dart';
 import 'package:never_miss_a_class/pages/auth/login_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

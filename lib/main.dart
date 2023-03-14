@@ -1,12 +1,13 @@
-import 'package:flutter/material.dart';
+// Work is done here, don't touvh this file.
+// Panna, control yourself, no touching the main fail - Please!
+
+import 'package:never_miss_a_class/helper/helper_function.dart';
 import 'package:never_miss_a_class/pages/auth/login_page.dart';
 import 'package:never_miss_a_class/pages/home_page.dart';
 import 'package:never_miss_a_class/shared/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-
-import 'helper/helper_function.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
