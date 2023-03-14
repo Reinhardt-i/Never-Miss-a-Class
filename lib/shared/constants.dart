@@ -9,5 +9,7 @@ class Constants {
 
   static String appId = "1:691541525607:web:12d5934c32831ed49fc0c2";
 
-  final primaryColor = const Color.fromARGB(0, 101, 70, 193);
+  final primaryColor = const Color(0xFFee7b64);
 }
+
+// DONE
