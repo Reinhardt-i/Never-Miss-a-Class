@@ -1,10 +1,8 @@
 import 'package:never_miss_a_class/helper/helper_function.dart';
 import 'package:never_miss_a_class/pages/auth/login_page.dart';
-import 'package:never_miss_a_class/pages/profile_page.dart';
-import 'package:never_miss_a_class/pages/search_page.dart';
+import 'package:never_miss_a_class/pages/auth/register_page.dart';
 import 'package:never_miss_a_class/service/auth_service.dart';
 import 'package:never_miss_a_class/service/database_service.dart';
-import 'package:never_miss_a_class/widgets/group_tile.dart';
 import 'package:never_miss_a_class/widgets/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +65,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
               onPressed: () {
-                nextScreen(context, const SearchPage());
+                nextScreen(context, const RegisterPage());
               },
               icon: const Icon(
                 Icons.search,
@@ -119,12 +117,7 @@ class _HomePageState extends State<HomePage> {
           ),
           ListTile(
             onTap: () {
-              nextScreenReplace(
-                  context,
-                  ProfilePage(
-                    userName: userName,
-                    email: email,
-                  ));
+              nextScreenReplace(context, RegisterPage());
             },
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -287,10 +280,7 @@ class _HomePageState extends State<HomePage> {
                 itemCount: snapshot.data['groups'].length,
                 itemBuilder: (context, index) {
                   int reverseIndex = snapshot.data['groups'].length - index - 1;
-                  return GroupTile(
-                      groupId: getId(snapshot.data['groups'][reverseIndex]),
-                      groupName: getName(snapshot.data['groups'][reverseIndex]),
-                      userName: snapshot.data['fullName']);
+                  return RegisterPage();
                 },
               );
             } else {
