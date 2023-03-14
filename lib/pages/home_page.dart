@@ -1,9 +1,11 @@
-import 'package:never_miss_a_class/helper/helper_function.dart';
-import 'package:never_miss_a_class/pages/auth/login_page.dart';
-import 'package:never_miss_a_class/pages/auth/register_page.dart';
-import 'package:never_miss_a_class/service/auth_service.dart';
-import 'package:never_miss_a_class/service/database_service.dart';
-import 'package:never_miss_a_class/widgets/widgets.dart';
+import 'package:nmac/helper/helper_function.dart';
+import 'package:nmac/pages/auth/login_page.dart';
+import 'package:nmac/pages/profile_page.dart';
+import 'package:nmac/pages/search_page.dart';
+import 'package:nmac/service/auth_service.dart';
+import 'package:nmac/service/database_service.dart';
+import 'package:nmac/widgets/group_tile.dart';
+import 'package:nmac/widgets/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -65,7 +67,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
               onPressed: () {
-                nextScreen(context, const RegisterPage());
+                nextScreen(context, const SearchPage());
               },
               icon: const Icon(
                 Icons.search,
@@ -117,7 +119,12 @@ class _HomePageState extends State<HomePage> {
           ),
           ListTile(
             onTap: () {
-              nextScreenReplace(context, const RegisterPage());
+              nextScreenReplace(
+                  context,
+                  ProfilePage(
+                    userName: userName,
+                    email: email,
+                  ));
             },
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -237,7 +244,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.of(context).pop();
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Theme.of(context).primaryColor),
+                      primary: Theme.of(context).primaryColor),
                   child: const Text("CANCEL"),
                 ),
                 ElevatedButton(
@@ -259,7 +266,7 @@ class _HomePageState extends State<HomePage> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Theme.of(context).primaryColor),
+                      primary: Theme.of(context).primaryColor),
                   child: const Text("CREATE"),
                 )
               ],
@@ -280,7 +287,10 @@ class _HomePageState extends State<HomePage> {
                 itemCount: snapshot.data['groups'].length,
                 itemBuilder: (context, index) {
                   int reverseIndex = snapshot.data['groups'].length - index - 1;
-                  return const RegisterPage();
+                  return GroupTile(
+                      groupId: getId(snapshot.data['groups'][reverseIndex]),
+                      groupName: getName(snapshot.data['groups'][reverseIndex]),
+                      userName: snapshot.data['fullName']);
                 },
               );
             } else {

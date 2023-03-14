@@ -1,10 +1,7 @@
-// Work is done here, don't touvh this file.
-// Panna, control yourself, no touching the main fail - Please!
-
-import 'package:never_miss_a_class/helper/helper_function.dart';
-import 'package:never_miss_a_class/pages/auth/login_page.dart';
-import 'package:never_miss_a_class/pages/home_page.dart';
-import 'package:never_miss_a_class/shared/constants.dart';
+import 'package:nmac/helper/helper_function.dart';
+import 'package:nmac/pages/auth/login_page.dart';
+import 'package:nmac/pages/home_page.dart';
+import 'package:nmac/shared/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';

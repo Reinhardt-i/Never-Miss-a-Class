@@ -1,4 +1,4 @@
-package com.example.never_miss_a_class
+package com.example.nmac
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,8 +1,8 @@
-import 'package:never_miss_a_class/helper/helper_function.dart';
-import 'package:never_miss_a_class/pages/auth/login_page.dart';
-import 'package:never_miss_a_class/pages/home_page.dart';
-import 'package:never_miss_a_class/service/auth_service.dart';
-import 'package:never_miss_a_class/widgets/widgets.dart';
+import 'package:nmac/helper/helper_function.dart';
+import 'package:nmac/pages/auth/login_page.dart';
+import 'package:nmac/pages/home_page.dart';
+import 'package:nmac/service/auth_service.dart';
+import 'package:nmac/widgets/widgets.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -38,13 +38,13 @@ class _RegisterPageState extends State<RegisterPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         const Text(
-                          "Groupie",
+                          "Never Miss A Class!",
                           style: TextStyle(
                               fontSize: 40, fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 10),
                         const Text(
-                            "Create your account now to chat and explore",
+                            "Create your account now to get class updates",
                             style: TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.w400)),
                         Image.asset("assets/register.png"),
@@ -122,7 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           width: double.infinity,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Theme.of(context).primaryColor,
+                                primary: Theme.of(context).primaryColor,
                                 elevation: 0,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30))),

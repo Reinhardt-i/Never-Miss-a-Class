@@ -1,6 +1,6 @@
 {
-    "name": "never_miss_a_class",
-    "short_name": "never_miss_a_class",
+    "name": "nmac",
+    "short_name": "nmac",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

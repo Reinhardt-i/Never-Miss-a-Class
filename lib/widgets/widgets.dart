@@ -1,5 +1,3 @@
-// I don''t need no more widgets!
-
 import 'package:flutter/material.dart';
 
 const textInputDecoration = InputDecoration(

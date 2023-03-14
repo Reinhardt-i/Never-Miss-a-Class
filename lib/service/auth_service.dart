@@ -1,5 +1,5 @@
-import 'package:never_miss_a_class/helper/helper_function.dart';
-import 'package:never_miss_a_class/service/database_service.dart';
+import 'package:nmac/helper/helper_function.dart';
+import 'package:nmac/service/database_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {

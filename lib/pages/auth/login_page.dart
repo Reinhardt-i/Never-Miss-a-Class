@@ -1,9 +1,9 @@
-import 'package:never_miss_a_class/helper/helper_function.dart';
-import 'package:never_miss_a_class/pages/auth/register_page.dart';
-import 'package:never_miss_a_class/pages/home_page.dart';
-import 'package:never_miss_a_class/service/auth_service.dart';
-import 'package:never_miss_a_class/service/database_service.dart';
-import 'package:never_miss_a_class/widgets/widgets.dart';
+import 'package:nmac/helper/helper_function.dart';
+import 'package:nmac/pages/auth/register_page.dart';
+import 'package:nmac/pages/home_page.dart';
+import 'package:nmac/service/auth_service.dart';
+import 'package:nmac/service/database_service.dart';
+import 'package:nmac/widgets/widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         const SizedBox(height: 10),
                         const Text(
-                            "Let Drey, your personal AI asistant wake you up an hour before your class.",
+                            "Let Drey, your personal AI assistant wake you up an hour before your class.",
                             style: TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.w400)),
                         Image.asset("assets/login.png"),
@@ -102,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                           width: double.infinity,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Theme.of(context).primaryColor,
+                                primary: Theme.of(context).primaryColor,
                                 elevation: 0,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30))),
