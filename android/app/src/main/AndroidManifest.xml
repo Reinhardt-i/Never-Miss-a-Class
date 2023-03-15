@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.nmac">
+    package="com.example.never_miss_a_class">
    <application
-        android:label="nmac"
+        android:label="never_miss_a_class"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

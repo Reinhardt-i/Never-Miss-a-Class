@@ -10,13 +10,10 @@
 ## Getting Started
 Download the repo, use "*flutter run*" to test the app.
 
-![Alt text](https://github.com/Reinhardt-i/Never-Miss-a-Class/blob/main/assets/readme_loginpage.png)
 
-
-A few resources to get you started if this is your first Flutter project:
+Resources :
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [online documentation](https://docs.flutter.dev/)
+- [flutter dev - learn](https://flutter.dev/learn)
