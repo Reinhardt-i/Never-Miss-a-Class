@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         const SizedBox(height: 10),
                         const Text(
-                            "Let Drey, your personal AI assistant wake you up an hour before your class.",
+                            "Get all your class updates, in one secure and reliable place",
                             style: TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.w400)),
                         Image.asset("assets/login.png"),
